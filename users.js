@@ -21,8 +21,12 @@ function addUser({ id, name, room }) {
 };
 
 // Remove user
-function removeUser() {
+function removeUser(id) {
+    const index = users.findIndex(user => user.id === id);
 
+    if(index !== -1) {
+        return users.splice(index, 1)[0];
+    }
 };
 
 // Get user
