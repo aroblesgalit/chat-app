@@ -3,6 +3,9 @@ const express = require("express");
 const socketio = require("socket.io");
 const http = require("http"); // Built-in module
 
+// Import helpfer functions
+const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
+
 // Specify our port
 const PORT = process.env.PORT || 5000;
 
@@ -16,13 +19,17 @@ const io = socketio(server); // Create io, an instance of socketio and pass in o
 
 // Integrate io
 io.on("connection", (socket) => {
-    console.log("We have a new connection!!!");
-
     socket.on("join", ({ name, room }, cb) => {
-        console.log(name, room);
+        const { error, user } = addUser({ id: socket.id, name, room });
 
-        const err = true;
-        
+        if(error) return cb(error);
+
+        socket.emit("message", { user: "admin", text: `${user.name}, welcome to the room ${user.room}` });
+        socket.broadcast.to(user.room).emit("message", { user: "admin", text: `${user.name} has joined!` });
+
+        socket.join(user.room);
+
+        cb();
     });
 
     // Implement disconnect
