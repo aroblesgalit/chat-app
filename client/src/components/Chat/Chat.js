@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import queryString from "query-string"; // Allows to use queries from the url
 import io from "socket.io-client"; 
+import InfoBar from "../InfoBar/InfoBar";
 import "./Chat.css";
 
 // Create empty variable
@@ -50,9 +51,12 @@ function Chat() {
         }
     };
 
+    console.log(message, messages);
+
     return (
         <div className="chat-container">
             <div>
+                <InfoBar room={room} />
                 <input 
                     className="uk-input" 
                     value={message} 
