@@ -30,8 +30,8 @@ function removeUser(id) {
 };
 
 // Get user
-function getUser() {
-
+function getUser(id) {
+    return users.find(user => user.id === id);
 };
 
 // Get users in room
