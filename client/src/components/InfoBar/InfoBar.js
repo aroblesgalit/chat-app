@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function InfoBar({ room }) {
     return (
-        <div className="infobar-container uk-flex uk-flex-between uk-flex-middle">
+        <div className="infobar-container uk-flex uk-flex-between uk-flex-middle uk-margin-bottom">
             <div className="uk-flex uk-flex-middle">
                 <span className="uk-margin-small-right" uk-icon="world"></span>
                 <h3>{room}</h3>

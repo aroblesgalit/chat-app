@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import queryString from "query-string"; // Allows to use queries from the url
-import io from "socket.io-client"; 
+import io from "socket.io-client";
 import InfoBar from "../InfoBar/InfoBar";
+import Input from "../Input/Input";
 import "./Chat.css";
 
 // Create empty variable
@@ -25,7 +26,7 @@ function Chat() {
         setRoom(roomname)
 
         socket.emit("join", { name: username, room: roomname }, () => {
-            
+
         });
 
         return () => {
@@ -46,7 +47,7 @@ function Chat() {
     function sendMessage(e) {
         e.preventDefault();
 
-        if(message) {
+        if (message) {
             socket.emit("sendMessage", message, () => setMessage(""));
         }
     };
@@ -57,12 +58,8 @@ function Chat() {
         <div className="chat-container">
             <div>
                 <InfoBar room={room} />
-                <input 
-                    className="uk-input" 
-                    value={message} 
-                    onChange={e => setMessage(e.target.value)} 
-                    onKeyPress={e => e.key === "Enter" ? sendMessage(e) : null}
-                />
+
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
         </div>
     );

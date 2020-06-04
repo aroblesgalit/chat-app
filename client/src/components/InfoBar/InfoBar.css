@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-.infobar-container {
-    padding: 30px;
-}
-
 .infobar-container h3{
     margin: 0;
 }
