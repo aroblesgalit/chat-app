@@ -16,7 +16,7 @@ function Join() {
                 <div className="uk-margin-bottom uk-width-expand">
                     <input className="uk-input" placeholder="" type="text" onChange={e => setRoom(e.target.value)} />
                 </div>
-                <Link to="" className="uk-button uk-button-primary" type="submit">Sign In</Link>
+                <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/chat?name=${name}&room=${room}`} className="uk-button uk-button-primary" type="submit">Sign In</Link>
             </form>
         </div>
     );
