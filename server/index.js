@@ -2,6 +2,7 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http"); // Built-in module
+const cors = require("cors");
 
 // Import helpfer functions
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
@@ -55,6 +56,7 @@ io.on("connection", (socket) => {
 
 // Call router as middleware
 app.use(router);
+app.use(cors);
 
 // Run our server 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
