@@ -18,8 +18,11 @@ const io = socketio(server); // Create io, an instance of socketio and pass in o
 io.on("connection", (socket) => {
     console.log("We have a new connection!!!");
 
-    socket.on("join", ({ name, room }) => {
+    socket.on("join", ({ name, room }, cb) => {
         console.log(name, room);
+
+        const err = true;
+        
     });
 
     // Implement disconnect

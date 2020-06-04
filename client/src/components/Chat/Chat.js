@@ -20,7 +20,15 @@ function Chat() {
         setName(username);
         setRoom(roomname)
 
-        socket.emit("join", { name: username, room: roomname });
+        socket.emit("join", { name: username, room: roomname }, () => {
+            
+        });
+
+        return () => {
+            socket.emit("disconnect");
+
+            socket.off();
+        }
     }, [ENDPOINT, roomname, username]);
 
     return (
