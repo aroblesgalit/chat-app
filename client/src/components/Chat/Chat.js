@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import queryString from "query-string"; // Allows to use queries from the url
 import io from "socket.io-client"; 
+import "./Chat.css";
 
 // Create empty variable
 let socket;
@@ -40,8 +41,26 @@ function Chat() {
         });
     }, [messages]);
 
+    // Function for sending messages
+    function sendMessage(e) {
+        e.preventDefault();
+
+        if(message) {
+            socket.emit("sendMessage", message, () => setMessage(""));
+        }
+    };
+
     return (
-        <h1>Chat</h1>
+        <div className="chat-container">
+            <div>
+                <input 
+                    className="uk-input" 
+                    value={message} 
+                    onChange={e => setMessage(e.target.value)} 
+                    onKeyPress={e => e.key === "Enter" ? sendMessage(e) : null}
+                />
+            </div>
+        </div>
     );
 }
 
