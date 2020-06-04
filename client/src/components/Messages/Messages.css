@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.messages-container {
+    min-height: 580px;
+    max-height: 580px;
+    padding: 20px;
+}

@@ -12,21 +12,21 @@ function Message({ message: { user, text }, name }) {
     }
 
     return (
-        <div>
+        <div className={ isSentByCurrentUser ? "uk-flex uk-flex-right uk-margin-small-bottom" : "uk-flex uk-flex-left uk-margin-small-bottom"}>
 
             {
                 isSentByCurrentUser ? (
-                    <div className="uk-flex uk-flex-column uk-flex-right">
-                        <p>{trimmedName}</p>
+                    <div className="message-box uk-flex uk-flex-column uk-text-right">
+                        <p className="uk-margin-small-bottom">{trimmedName}</p>
                         <div className="uk-background-primary uk-padding">
-                            <p className="uk-light">{text}</p>
+                            <p className="uk-light uk-margin-remove">{text}</p>
                         </div>
                     </div>
                 ) : (
-                        <div className="uk-flex uk-flex-column uk-flex-left">
-                            <p>{user}</p>
+                        <div className="message-box uk-flex uk-flex-column">
+                            <p className="uk-margin-small-bottom">{user}</p>
                             <div className="uk-background-muted uk-padding">
-                                <p className="uk-dark">{text}</p>
+                                <p className="uk-dark uk-margin-remove">{text}</p>
                             </div>
                         </div>
                     )

@@ -6,13 +6,15 @@ import Message from "../Message/Message";
 function Messages({ messages, name }) {
     return (
         <ScrollToBottom>
-            {
-                messages.map((message, i) => {
-                    return <div key={i}>
-                        <Message message={message} name={name} />
-                    </div>
-                })
-            }
+            <div className="messages-container">
+                {
+                    messages.map((message, i) => {
+                        return <div key={i}>
+                            <Message message={message} name={name} />
+                        </div>
+                    })
+                }
+            </div>
         </ScrollToBottom>
     );
 }
