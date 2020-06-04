@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./Join.css";
 
 function Join() {
     const [name, setName] = useState("");
@@ -11,12 +11,14 @@ function Join() {
             <form className="join-form uk-background-default uk-padding uk-box-shadow-medium uk-flex uk-flex-column uk-flex-middle">
                 <h1>Join</h1>
                 <div className="uk-margin uk-width-expand">
-                    <input className="uk-input" placeholder="" type="text" onChange={e => setName(e.target.value)} />
+                    <input className="uk-input" placeholder="room name" type="text" onChange={e => setRoom(e.target.value)} />
                 </div>
                 <div className="uk-margin-bottom uk-width-expand">
-                    <input className="uk-input" placeholder="" type="text" onChange={e => setRoom(e.target.value)} />
+                    <input className="uk-input" placeholder="your name" type="text" onChange={e => setName(e.target.value)} />
                 </div>
-                <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/chat?name=${name}&room=${room}`} className="uk-button uk-button-primary" type="submit">Sign In</Link>
+                <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/chat/${room}/${name}`}>
+                    <button className="uk-button uk-button-primary" type="submit">Sign in</button>
+                </Link>
             </form>
         </div>
     );
