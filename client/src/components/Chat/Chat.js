@@ -3,14 +3,25 @@ import { useParams } from "react-router-dom";
 // import queryString from "query-string"; // Allows to use queries from the url
 import io from "socket.io-client"; 
 
-function Chat() {
+// Create empty variable
+let socket;
 
-    const { room, user } = useParams();
+function Chat() {
+    const [name, setName] = useState("");
+    const [room, setRoom] = useState("");
+    const ENDPOINT = "localhost:5000";
+
+    const { roomname, user } = useParams();
 
     useEffect(() => {
-        
-        console.log(room, user)
-    });
+        // After first connection, setup socket to our endpoint
+        socket = io(ENDPOINT);
+
+        setName(user);
+        setRoom(roomname)
+
+        console.log(socket);
+    }, [ENDPOINT, roomname, user]);
 
     return (
         <h1>Chat</h1>

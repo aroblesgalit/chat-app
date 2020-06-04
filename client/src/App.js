@@ -9,7 +9,7 @@ function App() {
             <Route path="/" exact>
                 <Join />
             </Route>
-            <Route path="/chat/:room/:user">
+            <Route path="/chat/:roomname/:user">
                 <Chat />
             </Route>
         </Router>
