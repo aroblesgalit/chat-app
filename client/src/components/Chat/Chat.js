@@ -11,17 +11,17 @@ function Chat() {
     const [room, setRoom] = useState("");
     const ENDPOINT = "localhost:5000";
 
-    const { roomname, user } = useParams();
+    const { roomname, username } = useParams();
 
     useEffect(() => {
         // After first connection, setup socket to our endpoint
         socket = io(ENDPOINT);
 
-        setName(user);
+        setName(username);
         setRoom(roomname)
 
-        socket.emit("join", { name, room });
-    }, [ENDPOINT, roomname, user]);
+        socket.emit("join", { name: username, room: roomname });
+    }, [ENDPOINT, roomname, username]);
 
     return (
         <h1>Chat</h1>

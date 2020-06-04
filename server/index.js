@@ -17,6 +17,11 @@ const io = socketio(server); // Create io, an instance of socketio and pass in o
 // Integrate io
 io.on("connection", (socket) => {
     console.log("We have a new connection!!!");
+
+    socket.on("join", ({ name, room }) => {
+        console.log(name, room);
+    });
+
     // Implement disconnect
     socket.on("disconnect", () => {
         console.log("User had left!!!");
