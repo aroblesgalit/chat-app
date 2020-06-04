@@ -14,6 +14,15 @@ const app = express(); // Runs our app
 const server = http.createServer(app); // Initialize our server and pass in our app
 const io = socketio(server); // Create io, an instance of socketio and pass in our server
 
+// Integrate io
+io.on("connection", (socket) => {
+    console.log("We have a new connection!!!");
+    // Implement disconnect
+    socket.on("disconnect", () => {
+        console.log("User had left!!!");
+    });
+});
+
 // Call router as middleware
 app.use(router);
 
