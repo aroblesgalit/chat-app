@@ -32,6 +32,14 @@ io.on("connection", (socket) => {
         cb();
     });
 
+    socket.on("sendMessage", (message, cb) => {
+        const user = getUser(socket.id);
+
+        io.to(user.room).emit("message", { user: user.name, text: message });
+
+        cb();
+    });
+
     // Implement disconnect
     socket.on("disconnect", () => {
         console.log("User had left!!!");
