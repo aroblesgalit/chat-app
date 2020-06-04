@@ -20,7 +20,7 @@ function Chat() {
         setName(user);
         setRoom(roomname)
 
-        console.log(socket);
+        socket.emit("join", { name, room });
     }, [ENDPOINT, roomname, user]);
 
     return (
