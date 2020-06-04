@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import Messages from "../Messages/Messages";
 import "./Chat.css";
 
 // Create empty variable
@@ -58,7 +59,7 @@ function Chat() {
         <div className="chat-container">
             <div>
                 <InfoBar room={room} />
-
+                <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
         </div>
